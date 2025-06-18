@@ -27,7 +27,9 @@
         }
         deferredPrompt = null;
       });
-    }
+    } else {
+    console.log('Install prompt not available');
+  }
   };
 
   window.addEventListener('beforeinstallprompt', (event) => {
