@@ -12,7 +12,7 @@ export default defineConfig({
         name: "Todo List PWA",
         short_name: "TodoPWA",
         description: "A simple todo list app as a Progressive Web App",
-        theme_color: "#ffffff",
+        theme_color: "#242424",
         icons: [
           {
             src: "/icon-192x192.png",
