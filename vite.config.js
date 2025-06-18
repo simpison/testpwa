@@ -13,15 +13,16 @@ export default defineConfig({
         short_name: "TodoPWA",
         description: "A simple todo list app as a Progressive Web App",
         theme_color: "#242424",
+        background_color: "#242424",
         display: "standalone",
         icons: [
           {
-            src: "/logo-192x192.png",
+            src: "/testpwa/icon-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/logo-512x512.png",
+            src: "/testpwa/icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
