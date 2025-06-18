@@ -3,6 +3,7 @@
 
   const todos = writable([]);
   let newTodo = '';
+  let deferredPrompt;
 
   const addTodo = () => {
     if (newTodo.trim()) {
@@ -14,6 +15,25 @@
   const removeTodo = (index) => {
     todos.update((items) => items.filter((_, i) => i !== index));
   };
+
+  const installApp = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    }
+  };
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+  });
 </script>
 
 <main>
@@ -23,6 +43,8 @@
     <input type="text" bind:value={newTodo} placeholder="Add a new todo" />
     <button on:click={addTodo}>Add</button>
   </div>
+
+  <button on:click={installApp} style="margin-top: 20px;">Install App</button>
 
   <ul>
     {#each $todos as todo, index}
